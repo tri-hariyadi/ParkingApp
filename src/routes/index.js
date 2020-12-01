@@ -2,7 +2,8 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   SplashScreen,
-  WelcomeScreen
+  WelcomeScreen,
+  LoginPage
 } from '../pages';
 
 const Stack = createStackNavigator();
@@ -18,6 +19,11 @@ const Routes = () => {
       <Stack.Screen
         name="WelcomeScreen"
         component={WelcomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="LoginPage"
+        component={LoginPage}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -1,10 +1,10 @@
-import React, { useState, Component } from 'react';
+import React from 'react';
 import { View, Text, Image, Dimensions, StatusBar } from 'react-native';
-// import Carousel, { Pagination } from 'react-native-snap-carousel';
-import Carousel from 'react-native-looped-carousel';
-import { ILWelcome1, ILWelcome2, ILWelcome3 } from '../../assets';
+import { Carousel } from '../../components';
 import { colors } from '../../utils';
+import { ILWelcome1, ILWelcome2, ILWelcome3 } from '../../assets';
 import Styles from './style';
+
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 
@@ -29,10 +29,7 @@ const ImageData = [
   },
 ];
 
-const WelcomeScreen = () => {
-  const c = React.createRef();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [size, setSize] = useState({ width: DEVICE_WIDTH, height: DEVICE_HEIGHT });
+const WelcomeScreen = ({ navigation }) => {
 
   const RenderItem = ({ item }) => {
     return (
@@ -47,42 +44,26 @@ const WelcomeScreen = () => {
           <Text style={Styles.textTitle}>{item.title}</Text>
           <Text style={Styles.textDesc}>{item.description}</Text>
         </View>
-        <View>
-          <Text>Hello</Text>
-        </View>
       </View>
     )
-  }
-
-  const onLayoutDidChange = (e) => {
-    const layout = e.nativeEvent.layout;
-    setSize({ width: layout.DEVICE_WIDTH, height: layout.DEVICE_HEIGHT });
   }
 
   return (
     <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center', backgroundColor: '#FFF' }}>
       <StatusBar backgroundColor={colors.colorVariables.greenLighten} barStyle="light-content" />
-      {/* <Carousel
-        autoplay
-        loop
-        loopClonesPerSide={10}
-        layout={"stack"}
-        layoutCardOffset={18}
-        ref={c}
-        data={ImageData}
-        sliderWidth={DEVICE_WIDTH}
-        itemWidth={DEVICE_WIDTH}
-        renderItem={renderItem}
-        onSnapToItem={index => setActiveIndex(index)} /> */}
       <Carousel
-        delay={5000}
-        style={size}
+        delay={8000}
+        style={{ width: DEVICE_WIDTH, height: DEVICE_HEIGHT }}
         autoplay
         pageInfo
-        onAnimateNextPage={(p) => console.log(p)}
+        arrows={true}
+        arrowStyle={Styles.arrowStyle}
+        rightArrowStyle={Styles.rightArrowStyle}
+        onNavigatePage={() => navigation.replace('LoginPage')}
+        // onAnimateNextPage={(p) => console.log(p)}
       >
         {ImageData.map((img, idx) => (
-          <RenderItem item={img} />
+          <RenderItem item={img} key={`welcome-${idx}`} />
         ))}
       </Carousel>
     </View>
