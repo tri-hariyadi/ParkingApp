@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import {
   responsiveHeight,
   responsiveWidth,
@@ -6,18 +6,20 @@ import {
 } from 'react-native-responsive-dimensions';
 import { customFont, colors } from '../../utils';
 
+const width= Dimensions.get('window').width;
+const height= Dimensions.get('window').height;
+
 const Style = StyleSheet.create({
   container: {
     flexGrow: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     backgroundColor: colors.colorVariables.greenLightDark1
   },
   formLogin: {
-    alignItems: 'center',
     paddingHorizontal: responsiveWidth(10),
     backgroundColor: colors.colorVariables.white,
-    paddingVertical: responsiveHeight(4),
+    paddingVertical: responsiveHeight(2),
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
   },
@@ -27,12 +29,13 @@ const Style = StyleSheet.create({
     alignItems: 'center',
   },
   imageLogo: (display) => ({
-    width: responsiveHeight(110),
-    height: responsiveWidth(40),
+    width: width,
+    height: height * 35/100,
+    position: display === 'none' ? 'relative' : 'absolute',
+    zIndex: -1,
     display: display,
   }),
   textWrapper: {
-    // marginLeft: 15
   },
   textLogo: {
     marginTop: responsiveHeight(3),

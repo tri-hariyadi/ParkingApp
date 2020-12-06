@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StatusBar, ScrollView, Keyboard } from 'react-native';
+import React, { useEffect, useState } from 'react'
+import { View, Text, Image, StatusBar, ScrollView, Keyboard, ImageBackground } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
 import { Gap, TextField, Button, Link } from '../../components';
 import { colors } from '../../utils';
-import { ILLogin } from '../../assets';
+import { ILSignup } from '../../assets';
 import Styles from './style';
 
-const LoginPage = ({ navigation }) => {
+const SignupPage = ({ navigation }) => {
   const a = React.useRef();
   const b = React.useRef();
+  const c = React.useRef();
+  const d = React.useRef();
   const scrollViewRef = React.useRef();
   const [isOpen, setIsOpen] = useState(false);
   const keyboardShowListener = React.useRef(null);
@@ -32,7 +34,11 @@ const LoginPage = ({ navigation }) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.colorVariables.greenLightDark1} barStyle="light-content" />
+      <StatusBar 
+        backgroundColor={isOpen ? colors.colorVariables.greenLightDark1 : "transparent"} 
+        translucent={!isOpen} 
+        barStyle={isOpen ? "light-content" : "dark-content"}
+      />
       <ScrollView
         ref={scrollViewRef}
         showsVerticalScrollIndicator={false}
@@ -42,25 +48,23 @@ const LoginPage = ({ navigation }) => {
       >
         <View style={Styles.wrapperImage}>
           <Image
-            source={ILLogin}
-            resizeMode="contain"
-            resizeMethod="resize"
+            source={ILSignup}
             style={Styles.imageLogo(isOpen ? 'none' : 'flex')}
           />
         </View>
         <View style={Styles.formLogin}>
           <View style={Styles.textWrapper}>
-            <Text style={Styles.textLogo}>Welcome Back</Text>
+            <Text style={Styles.textLogo}>Register Account</Text>
             <Text style={Styles.textDesc}>
-              Login with your email and password registered in Park Hero.
+              Make your new account in Park Hero.
           </Text>
           </View>
           <Gap height={4} />
           <Field
             externalRef={a}
             name='username'
-            placeholder='Enter Email/Username'
-            iconName='person-outline'
+            placeholder='Enter full name'
+            iconName='person'
             autoCapitalize='none'
             component={TextField}
             returnKeyType='next'
@@ -70,6 +74,30 @@ const LoginPage = ({ navigation }) => {
           <Gap height={3} />
           <Field
             externalRef={b}
+            name='email'
+            placeholder='Enter email address'
+            iconName='mail'
+            autoCapitalize='none'
+            component={TextField}
+            returnKeyType='next'
+            blurOnSubmit={false}
+            onSubmitEditing={() => c.current.focus()}
+          />
+          <Gap height={3} />
+          <Field
+            externalRef={c}
+            name='phone'
+            placeholder='Enter phone number'
+            iconName='phone'
+            autoCapitalize='none'
+            component={TextField}
+            returnKeyType='next'
+            blurOnSubmit={false}
+            onSubmitEditing={() => d.current.focus()}
+          />
+          <Gap height={3} />
+          <Field
+            externalRef={d}
             name='password'
             placeholder='Enter Password'
             iconName='vpn-key'
@@ -78,15 +106,15 @@ const LoginPage = ({ navigation }) => {
           />
           <Gap height={3} />
           <Button
-            type='primary'
+            type='secondary'
           // onPress={props.handleSubmit(onClick)}
           >
-            Login
+            Sign Up
         </Button>
           <Gap height={2} />
           <Link
-            desc="Don't have an Account ?"
-            link='Sign Up'
+            desc="Already have an Account ?"
+            link='Login'
             onPress={() => navigation.navigate('SignupPage')}
           />
         </View>
@@ -98,4 +126,4 @@ const LoginPage = ({ navigation }) => {
 export default reduxForm({
   form: 'formLogin',
   // validate: LoginValidation
-})(LoginPage);
+})(SignupPage);

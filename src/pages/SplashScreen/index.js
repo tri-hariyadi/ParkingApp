@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Text, Image, StatusBar, ImageBackground } from 'react-native';
-import { hideNavigationBar, showNavigationBar } from 'react-native-navigation-bar-color';
+import changeNavigationBarColor, { hideNavigationBar, showNavigationBar } from 'react-native-navigation-bar-color';
 import * as Animatable from 'react-native-animatable';
 import Styles from './style';
-import { AnimateLogo, fromBottom } from '../../utils';
+import { AnimateLogo, colors, fromBottom } from '../../utils';
 import { ILBackgroundSplash, ILParkingLogo } from '../../assets';
 
 const SplashScreen = ({ navigation }) => {
@@ -15,6 +15,7 @@ const SplashScreen = ({ navigation }) => {
 
     return () => {
       showNavigationBar();
+      changeNavigationBarColor(colors.colorVariables.whiteSmoke, true);
     }
   }, [navigation])
   return (

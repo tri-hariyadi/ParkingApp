@@ -16,14 +16,15 @@ const Styles = StyleSheet.create({
     backgroundColor: colors.colorVariables.whiteSmoke,
   },
   imageLogo: {
+    marginTop: responsiveHeight(-5),
     width: responsiveWidth(80),
-    height: responsiveHeight(35),
+    height: responsiveHeight(45),
   },
   wrapperText: {
     paddingHorizontal: 30,
   },
   textTitle: {
-    marginTop: responsiveHeight(-21),
+    marginTop: responsiveHeight(-24),
     fontSize: responsiveFontSize(2.5),
     color: colors.colorVariables.black1,
     fontFamily: customFont.secondary[800],
@@ -31,8 +32,8 @@ const Styles = StyleSheet.create({
     marginBottom: responsiveHeight(2)
   },
   textDesc: {
-    marginTop: responsiveHeight(1),
-    fontSize: responsiveFontSize(2),
+    marginTop: responsiveHeight(0.5),
+    fontSize: responsiveFontSize(1.9),
     color: colors.colorVariables.black1,
     fontFamily: customFont.primary[400],
     textAlign: 'center'

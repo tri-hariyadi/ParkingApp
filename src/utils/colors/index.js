@@ -10,10 +10,19 @@ const optionColors = {
 
   //green
   greenLighten: '#66bb6a',
+  greenLighten2: '#60cd4a',
   greenLightDark1: '#25ba78',
+  green2: '#0BCAD4',
 
   //red
-  redLight1: '#f78966'
+  redLight1: '#f78966',
+  redLight2: '#ffcdd2',
+
+  //blue
+  blue1: '#2091fe',
+  lightBlue: '#03a9f4',
+
+  indigo1: '#112340',
 }
 
 export const colors = {

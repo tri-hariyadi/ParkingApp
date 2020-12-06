@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Image, Dimensions, StatusBar } from 'react-native';
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
 import { Carousel } from '../../components';
 import { colors } from '../../utils';
 import { ILWelcome1, ILWelcome2, ILWelcome3 } from '../../assets';
@@ -30,6 +31,10 @@ const ImageData = [
 ];
 
 const WelcomeScreen = ({ navigation }) => {
+
+  useEffect(() => {
+    changeNavigationBarColor(colors.colorVariables.whiteSmoke, true);
+  }, []);
 
   const RenderItem = ({ item }) => {
     return (

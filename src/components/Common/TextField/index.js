@@ -16,12 +16,13 @@ const TextField = ({
   autoCapitalize,
   secureTextEntry,
   onSubmitEditing,
+  radiusSize,
   input: { onChange, ...restInput },
   meta: { error, warning, form, dispatch, touched },
 }) => {
   return (
     <View>
-      <View style={Styles.wrapper}>
+      <View style={Styles.wrapper(radiusSize)}>
         <Icon
           name={iconName}
           size={responsiveFontSize(2.5)}

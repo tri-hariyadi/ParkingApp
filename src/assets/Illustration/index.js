@@ -4,6 +4,8 @@ import ILWelcome1 from './background-1.png';
 import ILWelcome2 from './background-2.png';
 import ILWelcome3 from './background-3.png';
 import ILLogin from './login.png';
+import ILSignup from './signup.jpg';
+import ILNullPhoto from './null-photo.png';
 
 export {
   ILParkingLogo,
@@ -12,4 +14,6 @@ export {
   ILWelcome2,
   ILWelcome3,
   ILLogin,
+  ILSignup,
+  ILNullPhoto,
 }

@@ -7,18 +7,18 @@ import {
 import { colors, customFont } from '../../../utils';
 
 const Styles = StyleSheet.create({
-  wrapper: {
+  wrapper: (radiusSize) => ({
     flexDirection: 'row',
     backgroundColor: 'yellow',
     alignItems: 'center',
     backgroundColor: colors.colorVariables.white,
-    borderRadius: responsiveHeight(16),
+    borderRadius: responsiveHeight(radiusSize ? radiusSize : 16),
     width: responsiveWidth(80),
     paddingHorizontal: responsiveWidth(5),
     width: '100%',
     borderWidth: 1,
     borderColor: colors.colorVariables.whiteSmoke2
-  },
+  }),
   errorHelper: {
     flexDirection: 'row-reverse',
     marginTop: responsiveHeight(0.5),

@@ -9,7 +9,9 @@ const Button = ({
   background,
   type,
   color,
-  rippleColor
+  rippleColor,
+  borderRadius,
+  textBold
 }) => {
 
   const onPressing = () => {
@@ -19,7 +21,7 @@ const Button = ({
   }
 
   return (
-    <View style={Styles.wrapper}>
+    <View style={Styles.wrapper(borderRadius)}>
       <TouchableNativeFeedback
         onPress={onPressing}
         background={TouchableNativeFeedback.Ripple(
@@ -27,7 +29,7 @@ const Button = ({
         )}
       >
         <View style={Styles.container(background, type)}>
-          <Text style={Styles.text(color)}>{children}</Text>
+          <Text style={Styles.text(color, textBold)}>{children}</Text>
         </View>
       </TouchableNativeFeedback>
     </View>

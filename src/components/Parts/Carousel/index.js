@@ -36,6 +36,7 @@ export default class Carousel extends Component {
     pageInfoTextStyle: Text.propTypes.style,
     pageInfoBottomContainerStyle: viewPropTypes.style,
     pageInfoTextSeparator: PropTypes.string,
+    pageInfoPillStyle: viewPropTypes.style,
     bullets: PropTypes.bool,
     bulletsContainerStyle: Text.propTypes.style,
     bulletStyle: Text.propTypes.style,
@@ -332,7 +333,7 @@ export default class Carousel extends Component {
     (<View style={[styles.pageInfoBottomContainer, this.props.pageInfoBottomContainerStyle]} pointerEvents="none">
       <View style={styles.pageInfoContainer}>
         <View
-          style={[styles.pageInfoPill, { backgroundColor: this.props.pageInfoBackgroundColor }]}
+          style={[styles.pageInfoPill, this.props.pageInfoPillStyle, { backgroundColor: this.props.pageInfoBackgroundColor }]}
         >
           <Text
             style={[styles.pageInfoText, this.props.pageInfoTextStyle]}
@@ -509,7 +510,7 @@ const styles = StyleSheet.create({
   },
   chosenBullet: {
     margin: 10,
-    width: 10,
+    width: 20,
     height: 10,
     borderRadius: 20,
     backgroundColor: 'red',
