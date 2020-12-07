@@ -17,6 +17,7 @@ const optionColors = {
   //red
   redLight1: '#f78966',
   redLight2: '#ffcdd2',
+  redLighten1: '#ef5350',
 
   //blue
   blue1: '#2091fe',

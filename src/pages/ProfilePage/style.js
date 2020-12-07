@@ -91,8 +91,8 @@ const Styles = StyleSheet.create({
     paddingHorizontal: responsiveWidth(5),
   },
   titleSection: {
-    fontFamily: customFont.secondary[800],
-    fontSize: responsiveFontSize(2.25)
+    fontFamily: customFont.secondary[700],
+    fontSize: responsiveFontSize(2.4)
   },
   cardActive: {
     backgroundColor: colors.colorVariables.whiteSmoke,
@@ -115,6 +115,15 @@ const Styles = StyleSheet.create({
     borderRadius: 10,
     marginRight: responsiveWidth(4),
   },
+  iconNonActive: {
+    width: responsiveWidth(13),
+    height: responsiveWidth(13),
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.colorVariables.redLighten1,
+    borderRadius: 10,
+    marginRight: responsiveWidth(4),
+  },
   textPark: {
     fontFamily: customFont.secondary[700],
     fontSize: responsiveFontSize(1.8)
@@ -122,11 +131,42 @@ const Styles = StyleSheet.create({
   textHours: {
     fontFamily: customFont.secondary[400],
   },
+  wrapperViewActive: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   viewActive: {
     fontFamily: customFont.secondary[600],
     fontSize: responsiveFontSize(1.7),
     color: '#1565c0',
-    paddingRight: responsiveWidth(4),
+    paddingRight: responsiveWidth(2),
+    marginLeft: 5
+  },
+  vehicleText: {
+    marginLeft: responsiveWidth(3),
+    fontFamily: customFont.secondary[600],
+    fontSize: responsiveFontSize(2),
+    color: colors.colorVariables.indigo1,
+    textTransform: 'capitalize',
+  },
+  motorCycleProfile: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  detailVehicleCard: {
+    marginLeft: responsiveWidth(12)
+  },
+  detailCard: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  detailLabel: {
+    maxWidth: responsiveWidth(5)
+  },
+  separator: {
+    // marginHorizontal: responsiveWidth(5)
   }
 });
 
