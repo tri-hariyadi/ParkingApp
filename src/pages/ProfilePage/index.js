@@ -1,30 +1,20 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import * as Animatable from 'react-native-animatable';
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { responsiveFontSize } from 'react-native-responsive-dimensions';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ILNullPhoto } from '../../assets';
-import { Gap } from '../../components';
-import { colors, fromBottom, fromTopCard } from '../../utils';
+import { Gap, Dropdown, Button } from '../../components';
+import { colors } from '../../utils';
 import Styles from './style';
 
-const ProfilePage = () => {
-  const [activePark, setActivePark] = useState(false);
-  const [detailMotorCycle, setDetailMotorCycle] = useState(false);
-  const [detailCar, setDetailCar] = useState(false);
-
-  const viewDetailMotorCycle = () => {
-    setDetailMotorCycle(!detailMotorCycle);
-  }
-
-  const viewDetaiCar = () => {
-    setDetailCar(!detailCar);
-  }
+const ProfilePage = props => {
+  const [activePark, setActivePark] = useState(true);
 
   return (
     <View style={Styles.container}>
-      <View style={Styles.content}>
+      <ScrollView 
+        showsVerticalScrollIndicator={true}
+        style={Styles.content}>
         <View style={Styles.header}>
           <View>
             <Image
@@ -36,28 +26,16 @@ const ProfilePage = () => {
           </View>
           <View style={Styles.textProfileWrapper}>
             <Text style={Styles.textProfile}>Tri Hariyadi</Text>
-            <Text style={Styles.textEmailProfile}>trihariyadi24@gmail.com</Text>
-            <View style={Styles.wrapperVehicleType}>
-              <View style={Styles.motorCycle}>
-                <View style={Styles.iconVehicleWrapper}>
-                  <Icon
-                    name='two-wheeler'
-                    size={responsiveFontSize(3)}
-                    color='#FFF'
-                  />
-                </View>
-                <Text style={Styles.textVehicle}>CB 150 R</Text>
+            <Gap height={2} />
+            <View style={Styles.moneyWrapper}>
+              <View style={Styles.iconMoneyWrapper}>
+                <Icon
+                  name='monetization-on'
+                  size={responsiveFontSize(3)}
+                  color='#FFF'
+                />
               </View>
-              <View style={Styles.motorCycle}>
-                <View style={Styles.iconVehicleWrapper}>
-                  <Icon
-                    name='directions-car'
-                    size={responsiveFontSize(2.5)}
-                    color='#FFF'
-                  />
-                </View>
-                <Text style={Styles.textVehicle}>toyota avansa</Text>
-              </View>
+              <Text style={Styles.textMoney}>Rp. 15000</Text>
             </View>
           </View>
         </View>
@@ -66,7 +44,11 @@ const ProfilePage = () => {
           <Text style={Styles.titleSection}>Active Parking</Text>
           <Gap height={2} />
           {activePark ?
-            <View style={Styles.cardActive}>
+            <TouchableOpacity 
+              activeOpacity={0.6} 
+              style={Styles.cardActive}
+              onPress={() => props.navigation.navigate('ActivePark')} 
+            >
               <View style={Styles.leftCard}>
                 <View style={Styles.iconActive}>
                   <Icon
@@ -88,7 +70,7 @@ const ProfilePage = () => {
                 />
                 <Text style={Styles.viewActive}>View</Text>
               </View>
-            </View>
+            </TouchableOpacity>
             :
             <View style={Styles.cardActive}>
               <View style={Styles.leftCard}>
@@ -116,67 +98,90 @@ const ProfilePage = () => {
           <Gap height={2} />
           <Text style={Styles.titleSection}>Vehicle</Text>
           <Gap height={2} />
-          <TouchableOpacity style={Styles.motorCycleProfile} onPress={viewDetailMotorCycle}>
-            <View style={Styles.motorCycleProfile}>
-              <View style={Styles.iconVehicleWrapper}>
-                <Icon
-                  name='two-wheeler'
-                  size={responsiveFontSize(3)}
-                  color='#FFF'
-                />
-              </View>
-              <Text style={Styles.vehicleText}>Motor Cycle</Text>
+          <Dropdown
+            labelIcon='two-wheeler'
+            label='Motor Cycle'
+          >
+            <View style={Styles.detailCard}>
+              <Text style={Styles.detailLabel}>Type</Text>
+              <Text style={Styles.separator}>:</Text>
+              <Text style={Styles.detailItem}>Cb 150 R</Text>
             </View>
-            <Icon
-              name={detailMotorCycle ? 'keyboard-arrow-down' : 'keyboard-arrow-right'}
-              size={responsiveFontSize(2.8)}
-              color={colors.colorVariables.indigo1}
-            />
-          </TouchableOpacity>
-          {detailMotorCycle &&
-            <Animatable.View
-              animation={fromTopCard}
-              easing="ease-out"
-              duration={300}
-              style={Styles.detailVehicleCard}
+            <Gap height={1.5} />
+            <View style={Styles.detailCard}>
+              <Text style={Styles.detailLabel}>NoPol</Text>
+              <Text style={Styles.separator}>:</Text>
+              <Text style={Styles.detailItem}>B 3362 FQZ</Text>
+            </View>
+            <Gap height={1.5} />
+            <View style={Styles.detailCard}>
+              <Text style={Styles.detailLabel}>No Chassis</Text>
+              <Text style={Styles.separator}>:</Text>
+              <Text style={Styles.detailItem}>CR150435C22R</Text>
+            </View>
+            <Gap height={2} />
+            <Button
+              background={colors.colorVariables.greenLighten2}
+              borderRadius={10}
+              textBold
+              iconName='edit'
+              onPress={() => console.log('Hello')}
             >
-              <View style={Styles.detailCard}>
-                <Text style={Styles.detailLabel}>Name</Text>
-                <Text style={Styles.separator}>:</Text>
-                <Text>Cb 150 R</Text>
-              </View>
-              <View style={Styles.detailCard}>
-                <Text style={Styles.detailLabel}>NoPol</Text>
-                <Text style={Styles.separator}>:</Text>
-                <Text>Cb 150 R</Text>
-              </View>
-              <View style={Styles.detailCard}>
-                <Text style={Styles.detailLabel}>No Chassis</Text>
-                <Text style={Styles.separator}>:</Text>
-                <Text>Cb 150 R</Text>
-              </View>
-            </Animatable.View>
-          }
+              Edit
+            </Button>
+          </Dropdown>
           <Gap height={2.8} />
-          <TouchableOpacity style={Styles.motorCycleProfile} onClick={viewDetaiCar}>
-            <View style={Styles.motorCycleProfile}>
-              <View style={Styles.iconVehicleWrapper}>
-                <Icon
-                  name='directions-car'
-                  size={responsiveFontSize(3)}
-                  color='#FFF'
-                />
-              </View>
-              <Text style={Styles.vehicleText}>Car</Text>
+          <Dropdown
+            labelIcon='directions-car'
+            label='Car'
+          >
+            <View style={Styles.detailCard}>
+              <Text style={Styles.detailLabel}>Type</Text>
+              <Text style={Styles.separator}>:</Text>
+              <Text style={Styles.detailItem}>Toyota Avansa</Text>
             </View>
-            <Icon
-              name='keyboard-arrow-right'
-              size={responsiveFontSize(2.8)}
-              color={colors.colorVariables.indigo1}
-            />
-          </TouchableOpacity>
+            <Gap height={1.5} />
+            <View style={Styles.detailCard}>
+              <Text style={Styles.detailLabel}>NoPol</Text>
+              <Text style={Styles.separator}>:</Text>
+              <Text style={Styles.detailItem}>B 9955 QDE</Text>
+            </View>
+            <Gap height={1.5} />
+            <View style={Styles.detailCard}>
+              <Text style={Styles.detailLabel}>No Chassis</Text>
+              <Text style={Styles.separator}>:</Text>
+              <Text style={Styles.detailItem}>CR150488C22R</Text>
+            </View>
+            <Gap height={2} />
+            <Button
+              background={colors.colorVariables.greenLighten2}
+              borderRadius={10}
+              textBold
+              iconName='edit'
+              onPress={() => console.log('Hello')}
+            >
+              Edit
+            </Button>
+          </Dropdown>
+          <Gap height={2} />
+          <Text style={Styles.titleSection}>My Profile</Text>
+          <Gap height={2} />
+          <View>
+            <View style={Styles.detailCard}>
+              <Text style={Styles.detailLabel}>Phone</Text>
+              <Text style={Styles.separator}>:</Text>
+              <Text style={Styles.detailItem}>089660278221</Text>
+            </View>
+            <Gap height={1.5} />
+            <View style={Styles.detailCard}>
+              <Text style={Styles.detailLabel}>Email</Text>
+              <Text style={Styles.separator}>:</Text>
+              <Text style={Styles.detailItem}>trihariyadi24@gmail.com</Text>
+            </View>
+            <Gap height={2.5} />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   )
 }

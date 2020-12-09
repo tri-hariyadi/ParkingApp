@@ -72,7 +72,6 @@ const HomePage = () => {
                 longitudeDelta: 0.0121,
               }}
               borderRadius={10}
-              customMapStyle={{borderRadius: 20}}
             >
             </MapView> */}
           </View>

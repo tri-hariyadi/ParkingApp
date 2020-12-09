@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { colors } from '../../../utils';
 import Styles from './style';
 
 const Button = ({
@@ -11,7 +14,8 @@ const Button = ({
   color,
   rippleColor,
   borderRadius,
-  textBold
+  textBold,
+  iconName
 }) => {
 
   const onPressing = () => {
@@ -29,6 +33,14 @@ const Button = ({
         )}
       >
         <View style={Styles.container(background, type)}>
+          {iconName &&
+            <Icon
+              name={iconName}
+              size={responsiveFontSize(2.8)}
+              color={colors.colorVariables.white}
+              style={Styles.icon}
+            />
+          }
           <Text style={Styles.text(color, textBold)}>{children}</Text>
         </View>
       </TouchableNativeFeedback>

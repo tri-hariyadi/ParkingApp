@@ -41,15 +41,15 @@ export const fromBottom = {
 
 export const fromTopCard = {
   0: {
-    opacity: 0,
+    // opacity: 0,
     translateY: -20
   },
   0.5: {
-    opacity: 0.3,
+    // opacity: 0.3,
     translateY: -10
   },
   1: {
-    opacity: 1,
+    // opacity: 1,
     translateY: 0
   }
 }

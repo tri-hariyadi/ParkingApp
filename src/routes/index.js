@@ -9,6 +9,7 @@ import {
   HomePage,
   ProfilePage,
   ParkingPage,
+  ActivePark
 } from '../pages';
 import { BottomNavigator } from '../components';
 
@@ -51,6 +52,11 @@ const Routes = () => {
       <Stack.Screen
         name="MainApp"
         component={MainApp}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ActivePark"
+        component={ActivePark}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

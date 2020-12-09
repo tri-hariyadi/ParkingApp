@@ -5,6 +5,7 @@ import SignupPage from './SignupPage';
 import HomePage from './HomePage';
 import ParkingPage from './ParkingPage';
 import ProfilePage from './ProfilePage';
+import ActivePark from './ActivePark';
 
 export {
   SplashScreen,
@@ -13,5 +14,6 @@ export {
   SignupPage,
   HomePage,
   ParkingPage,
-  ProfilePage
+  ProfilePage,
+  ActivePark,
 }
