@@ -79,7 +79,7 @@ const LoginPage = ({ navigation }) => {
           <Gap height={3} />
           <Button
             type='primary'
-          // onPress={props.handleSubmit(onClick)}
+          onPress={() => navigation.navigate('MainApp')}
           >
             Login
         </Button>

@@ -35,7 +35,7 @@ const Dropdown = props => {
 
   return (
     <Animated.View
-      style={[Styles.container, { height: animation }]}>
+      style={[Styles.container(props.noBackground), { height: animation }]}>
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={toggle}
@@ -55,20 +55,21 @@ const Dropdown = props => {
                 </View>
               </>
             }
-            <Text style={Styles.label}>{props.label}</Text>
+            <Text style={Styles.label(props.noBackground)}>{props.label}</Text>
           </View>
-          <View>
+          <View style={Styles.wrapperArrowValue}>
+            <Text style={Styles.textValue}>{props.value}</Text>
             <Icon
               name={expanded ? 'keyboard-arrow-down' : 'keyboard-arrow-right'}
               size={responsiveFontSize(2.8)}
               color={colors.colorVariables.indigo1}
             />
-            <Gap width={8} />
+            {!props.noBackground && <Gap width={5} />}
           </View>
         </View>
         <Gap height={1.2} />
       </TouchableOpacity>
-      <View onLayout={_setMaxHeight} style={Styles.childrenWrapper}>
+      <View onLayout={_setMaxHeight} style={Styles.childrenWrapper(props.labelIcon, props.noBackground)}>
         {props.children}
       </View>
     </Animated.View>

@@ -28,13 +28,13 @@ const DataCarousel = [
   },
 ];
 
-const ParkingPage = () => {
+const ParkingPage = ({ navigation }) => {
   return (
     <View style={Styles.container}>
       <View style={Styles.content}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={Styles.contentContainerStyle}>
           <View style={Styles.containerMap}>
-            {/* <MapView
+            <MapView
               provider={PROVIDER_GOOGLE}
               style={Styles.map}
               region={{
@@ -45,9 +45,9 @@ const ParkingPage = () => {
               }}
               borderRadius={10}
             >
-            </MapView> */}
+            </MapView>
           </View>
-          <ParkCard data={DataCarousel} />
+          <ParkCard data={DataCarousel} navigation={() => navigation.navigate('BookingPark')} />
         </ScrollView>
       </View>
     </View>

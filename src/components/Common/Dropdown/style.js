@@ -7,11 +7,11 @@ import {
 import { colors, customFont } from '../../../utils';
 
 const Styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.colorVariables.whiteSmoke,
+  container: (noBackground) => ({
+    backgroundColor: !noBackground ? colors.colorVariables.whiteSmoke : 'transparent',
     overflow: 'hidden',
     borderRadius: 10,
-  },
+  }),
   dropdownContentWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -25,16 +25,26 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  label: {
-    marginLeft: responsiveWidth(3),
+  label: (noBackground) => ({
+    marginLeft: !noBackground ? responsiveWidth(3) : 0,
     fontFamily: customFont.secondary[600],
     fontSize: responsiveFontSize(2),
     color: colors.colorVariables.indigo1,
     textTransform: 'capitalize',
+  }),
+  childrenWrapper: (labelIcon, noBackground) => ({
+    paddingHorizontal: labelIcon ? responsiveWidth(14) : responsiveHeight(1),
+    paddingBottom: !noBackground ? responsiveHeight(3) : 0,
+  }),
+  wrapperArrowValue: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // marginRight: -6
   },
-  childrenWrapper: {
-    paddingHorizontal: responsiveWidth(14),
-    paddingBottom: responsiveHeight(3)
+  textValue: {
+    marginRight: 10,
+    fontFamily: customFont.secondary[600],
   }
 });
 

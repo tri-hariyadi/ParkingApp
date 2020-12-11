@@ -10,7 +10,7 @@ import Styles from './style';
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 
-const RenderItemCardPark = () => {
+const RenderItemCardPark = (props) => {
   return (
     <View style={Styles.card}>
       <View style={Styles.sectionOne}>
@@ -50,7 +50,7 @@ const RenderItemCardPark = () => {
               background={colors.colorVariables.greenLighten2}
               borderRadius={10}
               textBold
-              onPress={() => console.log('Hello')}
+              onPress={props.onPress}
             >
               Park Here
             </Button>
@@ -61,7 +61,9 @@ const RenderItemCardPark = () => {
   )
 }
 
-const ParkCard = ({ data }) => {
+const ParkCard = ({ data, navigation }) => {
+
+  console.log(navigation);
   return (
     <View style={{paddingHorizontal: 20}}>
       <Carousel
@@ -76,7 +78,7 @@ const ParkCard = ({ data }) => {
         pageInfoTextStyle={{fontWeight: 'bold', color: '#FFF'}}
       >
         {data.map((item, idx) => (
-          <RenderItemCardPark item={item} key={`park-card-${idx}`} />
+          <RenderItemCardPark item={item} key={`park-card-${idx}`} onPress={navigation} />
         ))}
       </Carousel>
     </View>

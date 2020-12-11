@@ -6,6 +6,7 @@ import HomePage from './HomePage';
 import ParkingPage from './ParkingPage';
 import ProfilePage from './ProfilePage';
 import ActivePark from './ActivePark';
+import BookingPark from './BookingPark';
 
 export {
   SplashScreen,
@@ -16,4 +17,5 @@ export {
   ParkingPage,
   ProfilePage,
   ActivePark,
+  BookingPark
 }

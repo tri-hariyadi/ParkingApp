@@ -62,7 +62,7 @@ const HomePage = () => {
           </View>
           <Gap height={2} />
           <View style={Styles.wrapperMap}>
-            {/* <MapView
+            <MapView
               provider={PROVIDER_GOOGLE}
               style={Styles.map}
               region={{
@@ -73,7 +73,7 @@ const HomePage = () => {
               }}
               borderRadius={10}
             >
-            </MapView> */}
+            </MapView>
           </View>
           <ListPark />
           <ListPark />

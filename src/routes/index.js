@@ -9,7 +9,8 @@ import {
   HomePage,
   ProfilePage,
   ParkingPage,
-  ActivePark
+  ActivePark,
+  BookingPark
 } from '../pages';
 import { BottomNavigator } from '../components';
 
@@ -28,7 +29,7 @@ const MainApp = () => {
 
 const Routes = () => {
   return (
-    <Stack.Navigator initialRouteName='MainApp'>
+    <Stack.Navigator initialRouteName='SplashScreen'>
       <Stack.Screen 
         name="SplashScreen"
         component={SplashScreen}
@@ -57,6 +58,11 @@ const Routes = () => {
       <Stack.Screen
         name="ActivePark"
         component={ActivePark}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="BookingPark"
+        component={BookingPark}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
