@@ -5,6 +5,7 @@ import BottomNavigator from './BottomNavigator';
 import ParkCard from './ParkCard';
 import Header from './Header';
 import Barcode from './Barcode';
+import Loading from './Loading';
 
 export {
   Carousel,
@@ -14,4 +15,5 @@ export {
   ParkCard,
   Header,
   Barcode,
+  Loading
 }

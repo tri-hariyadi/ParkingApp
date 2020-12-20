@@ -1,21 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { responsiveFontSize } from 'react-native-responsive-dimensions';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import jwt_decode from 'jwt-decode';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { ILNullPhoto } from '../../assets';
 import { Gap, Dropdown, Button } from '../../components';
-import { colors } from '../../utils';
+import { colors, getData } from '../../utils';
+import { GetVehicle } from '../../actions';
 import Styles from './style';
 
 const ProfilePage = props => {
   const [activePark, setActivePark] = useState(true);
+  const [dataUser, setDataUser] = useState(false);
+  const scrollViewRef = React.useRef();
+  const dispatch = useDispatch();
+  const { 
+    getVehicleData,
+    getVehicleLoading,
+    getVehicleError, 
+  } = useSelector(state => ({
+    getVehicleData: state.VehicleReducer.getVehicleData,
+    getVehicleLoading: state.VehicleReducer.getVehicleLoading,
+    getVehicleError: state.VehicleReducer.getVehicleError,
+  }), shallowEqual );
+
+  useEffect(() => {
+    getData('token')
+      .then(async (res) => {
+        const promise = await setDataUser(jwt_decode(res.accessToken));
+        await Promise.resolve(promise);
+        dispatch(GetVehicle(dataUser.idUser))
+      });
+  }, [])
+  console.log(dataUser);
 
   return (
     <View style={Styles.container}>
-      <ScrollView 
+      <ScrollView
+        ref={scrollViewRef}
         showsVerticalScrollIndicator={true}
         style={Styles.content}>
         <View style={Styles.header}>
+          <Gap height={2} />
           <View>
             <Image
               source={ILNullPhoto}
@@ -24,9 +51,9 @@ const ProfilePage = props => {
               resizeMethod='resize'
             />
           </View>
-          <View style={Styles.textProfileWrapper}>
-            <Text style={Styles.textProfile}>Tri Hariyadi</Text>
-            <Gap height={2} />
+          <Text style={Styles.textProfile}>{dataUser && dataUser.username}</Text>
+          <Gap height={2} />
+          <View style={{ flexDirection: 'row' }}>
             <View style={Styles.moneyWrapper}>
               <View style={Styles.iconMoneyWrapper}>
                 <Icon
@@ -37,17 +64,31 @@ const ProfilePage = props => {
               </View>
               <Text style={Styles.textMoney}>Rp. 15000</Text>
             </View>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={Styles.moneyWrapper}
+              onPress={() => props.navigation.navigate('AddSaldo')}>
+              <View style={Styles.iconMoneyWrapper}>
+                <Icon
+                  name='add-circle-outline'
+                  size={responsiveFontSize(3)}
+                  color='#FFF'
+                />
+              </View>
+              <Text style={Styles.textMoney}>Add Saldo</Text>
+            </TouchableOpacity>
           </View>
+          <Gap height={2} />
         </View>
         <Gap height={2.5} />
         <View style={Styles.body}>
           <Text style={Styles.titleSection}>Active Parking</Text>
           <Gap height={2} />
           {activePark ?
-            <TouchableOpacity 
-              activeOpacity={0.6} 
+            <TouchableOpacity
+              activeOpacity={0.6}
               style={Styles.cardActive}
-              onPress={() => props.navigation.navigate('ActivePark')} 
+              onPress={() => props.navigation.navigate('ActivePark')}
             >
               <View style={Styles.leftCard}>
                 <View style={Styles.iconActive}>
@@ -101,6 +142,7 @@ const ProfilePage = props => {
           <Dropdown
             labelIcon='two-wheeler'
             label='Motor Cycle'
+            onPress={() => scrollViewRef.current.scrollToEnd({ animated: true })}
           >
             <View style={Styles.detailCard}>
               <Text style={Styles.detailLabel}>Type</Text>
@@ -125,7 +167,7 @@ const ProfilePage = props => {
               borderRadius={10}
               textBold
               iconName='edit'
-              onPress={() => console.log('Hello')}
+              onPress={() => props.navigation.navigate('RegisterVehicle', 'MC')}
             >
               Edit
             </Button>
@@ -134,6 +176,7 @@ const ProfilePage = props => {
           <Dropdown
             labelIcon='directions-car'
             label='Car'
+            onPress={() => scrollViewRef.current.scrollToEnd({ animated: true })}
           >
             <View style={Styles.detailCard}>
               <Text style={Styles.detailLabel}>Type</Text>
@@ -170,13 +213,13 @@ const ProfilePage = props => {
             <View style={Styles.detailCard}>
               <Text style={Styles.detailLabel}>Phone</Text>
               <Text style={Styles.separator}>:</Text>
-              <Text style={Styles.detailItem}>089660278221</Text>
+              <Text style={Styles.detailItem}>{dataUser && dataUser.phonenumber}</Text>
             </View>
             <Gap height={1.5} />
             <View style={Styles.detailCard}>
               <Text style={Styles.detailLabel}>Email</Text>
               <Text style={Styles.separator}>:</Text>
-              <Text style={Styles.detailItem}>trihariyadi24@gmail.com</Text>
+              <Text style={Styles.detailItem}>{dataUser && dataUser.email}</Text>
             </View>
             <Gap height={2.5} />
           </View>

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { ParkCard } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
+import { Loading, ParkCard } from '../../components';
+import { GetParkingArea } from '../../actions';
 import Styles from './style';
 
 const DataCarousel = [
@@ -29,28 +31,44 @@ const DataCarousel = [
 ];
 
 const ParkingPage = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const listPakingArea = useSelector(state => state.ParkingAreaReducer.getListParkingAreaData);
+  const loadingParkingArea = useSelector(state => state.ParkingAreaReducer.getListParkingAreaLoading);
+  const errorParkingArea = useSelector(state => state.ParkingAreaReducer.getListParkingAreaError);
+
+  useEffect(() => {
+    // dispatch(GetParkingArea());
+  }, [])
+
   return (
-    <View style={Styles.container}>
-      <View style={Styles.content}>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={Styles.contentContainerStyle}>
-          <View style={Styles.containerMap}>
-            <MapView
-              provider={PROVIDER_GOOGLE}
-              style={Styles.map}
-              region={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.015,
-                longitudeDelta: 0.0121,
-              }}
-              borderRadius={10}
-            >
-            </MapView>
-          </View>
-          <ParkCard data={DataCarousel} navigation={() => navigation.navigate('BookingPark')} />
-        </ScrollView>
+    <>
+      <View style={Styles.container}>
+        <View style={Styles.content}>
+          <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={Styles.contentContainerStyle}>
+            <View style={Styles.containerMap}>
+              <MapView
+                provider={PROVIDER_GOOGLE}
+                style={Styles.map}
+                region={{
+                  latitude: -6.260086,
+                  longitude: 107.012956,
+                  latitudeDelta: 0.015,
+                  longitudeDelta: 0.0121,
+                }}
+                borderRadius={10}
+              >
+              </MapView>
+            </View>
+            {listPakingArea &&
+              <ParkCard data={listPakingArea} navigation={navigation} />}
+          </ScrollView>
+        </View>
       </View>
-    </View>
+      {/* <Loading
+        visible={loadingParkingArea}
+        onRequestClose={() => navigation.goBack()}
+      /> */}
+    </>
   )
 }
 

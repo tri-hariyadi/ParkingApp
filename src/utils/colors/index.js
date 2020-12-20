@@ -24,6 +24,12 @@ const optionColors = {
   lightBlue: '#03a9f4',
 
   indigo1: '#112340',
+
+  orangeAccent1:'#ff6d00',
+
+  warning: '#ffc107',
+  danger: '#DD6B55',
+  success: '#60cd4a'
 }
 
 export const colors = {

@@ -27,6 +27,11 @@ const Styles = StyleSheet.create({
   }),
   icon: {
     marginRight: 4
+  },
+  wrapperLoading: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });
 

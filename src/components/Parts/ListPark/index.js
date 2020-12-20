@@ -6,10 +6,10 @@ const ListPark = ({ styles, data }) => {
   return (
     <View style={[Styles.container, styles]}>
       <View style={Styles.parkSection}>
-        <Text style={Styles.parkingName}>Parking Area GBK</Text>
+        <Text style={Styles.parkingName}>{data.name}</Text>
         <View style={Styles.wrapperParkDesc}>
-          <Text style={Styles.pricePark}>Rp 5000/hr</Text>
-          <Text style={Styles.slots}>20 Slot Available</Text>
+          <Text style={Styles.pricePark}>Rp {data.price}/hr</Text>
+          <Text style={Styles.slots}>{data.slotAvailable} Slot Available</Text>
         </View>
       </View>
       <View style={Styles.kmDisplay}>

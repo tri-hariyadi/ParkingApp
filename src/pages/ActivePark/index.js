@@ -10,10 +10,13 @@ import { colors } from '../../utils';
 import Styles from './style';
 
 const ActivePark = props => {
+  const itemPark = props.route.params;
+  console.log(itemPark);
   return (
     <>
       <Header
         label="Active Park"
+        onPress={() => props.navigation.goBack()}
       />
       <ScrollView contentContainerStyle={Styles.container} showsVerticalScrollIndicator={false}>
         <View>
@@ -69,8 +72,8 @@ const ActivePark = props => {
                 />
               </View>
               <View>
-                <Text style={Styles.textDetail}>Parking area gbk</Text>
-                <Text style={[Styles.textParkAddress, Styles.textDetail]}>Asia Afrika, Jakrta Pusat</Text>
+                <Text style={Styles.textDetail}>Parkir Area Bu Romli</Text>
+                <Text style={[Styles.textParkAddress, Styles.textDetail]}>Jakarta Selatan</Text>
               </View>
             </View>
           </View>

@@ -30,7 +30,7 @@ const Styles = StyleSheet.create({
     fontFamily: customFont.secondary[600],
     fontSize: responsiveFontSize(2),
     color: colors.colorVariables.indigo1,
-    textTransform: 'capitalize',
+    // textTransform: 'capitalize',
   }),
   childrenWrapper: (labelIcon, noBackground) => ({
     paddingHorizontal: labelIcon ? responsiveWidth(14) : responsiveHeight(1),

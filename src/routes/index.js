@@ -10,7 +10,10 @@ import {
   ProfilePage,
   ParkingPage,
   ActivePark,
-  BookingPark
+  BookingPark,
+  RegisterVehicle,
+  AddSaldo,
+  TransferPage
 } from '../pages';
 import { BottomNavigator } from '../components';
 
@@ -63,6 +66,21 @@ const Routes = () => {
       <Stack.Screen
         name="BookingPark"
         component={BookingPark}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RegisterVehicle"
+        component={RegisterVehicle}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AddSaldo"
+        component={AddSaldo}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="TransferPage"
+        component={TransferPage}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

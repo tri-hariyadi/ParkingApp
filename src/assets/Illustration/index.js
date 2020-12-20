@@ -7,6 +7,12 @@ import ILLogin from './login.png';
 import ILSignup from './signup.jpg';
 import ILNullPhoto from './null-photo.png';
 import ILGoogleMap from './google-map.png';
+import ILBCA from './logo-bca.png';
+import ILMandiri from './logo-mandiri.png';
+import ILBni from './logo-bni.png';
+import ILTransferImg from './transfer-img.png';
+import sweetalert from './sweetalert.gif';
+import ILSpinner from './Spinner2.gif';
 
 export {
   ILParkingLogo,
@@ -18,4 +24,10 @@ export {
   ILSignup,
   ILNullPhoto,
   ILGoogleMap,
+  ILBCA,
+  ILMandiri,
+  ILBni,
+  ILTransferImg,
+  sweetalert,
+  ILSpinner
 }

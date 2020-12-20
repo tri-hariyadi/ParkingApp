@@ -7,6 +7,9 @@ import ParkingPage from './ParkingPage';
 import ProfilePage from './ProfilePage';
 import ActivePark from './ActivePark';
 import BookingPark from './BookingPark';
+import RegisterVehicle from './RegisterVehicle';
+import AddSaldo from './AddSaldo';
+import TransferPage from './TransferPage';
 
 export {
   SplashScreen,
@@ -17,5 +20,8 @@ export {
   ParkingPage,
   ProfilePage,
   ActivePark,
-  BookingPark
+  BookingPark,
+  RegisterVehicle,
+  AddSaldo,
+  TransferPage,
 }

@@ -22,6 +22,12 @@ const Dropdown = props => {
       toValue: finalValue,
       useNativeDriver: false
     }).start();
+
+    setTimeout(() => {
+      if (props.onPress) {
+        props.onPress();
+      }
+    }, 300)
   }
 
   const _setMaxHeight = (event) => {

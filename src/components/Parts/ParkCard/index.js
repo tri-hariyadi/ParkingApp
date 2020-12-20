@@ -8,15 +8,15 @@ import Carousel from '../Carousel';
 import Styles from './style';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
-const DEVICE_HEIGHT = Dimensions.get('window').height;
 
 const RenderItemCardPark = (props) => {
+  const item = props.item
   return (
     <View style={Styles.card}>
       <View style={Styles.sectionOne}>
         <View>
-          <Text style={Styles.parkingName}>parking Area GBK</Text>
-          <Text style={Styles.parkingPosition}>Asia Afrika, Jakarta Pusat, DKI Jakarta</Text>
+          <Text style={Styles.parkingName}>{item.name}</Text>
+          <Text style={Styles.parkingPosition}>{item.address}</Text>
         </View>
         <View style={Styles.distanceText}>
           <Text style={Styles.numberKm}>0.6</Text>
@@ -36,13 +36,13 @@ const RenderItemCardPark = (props) => {
             <Text style={Styles.textCloseAt}> . close at 09 PM</Text>
           </View>
           <View>
-            <Text style={Styles.price}>Rp 5.000/Hour</Text>
+            <Text style={Styles.price}>Rp {item.price}/Hour</Text>
           </View>
         </View>
         <Gap height={2.5} />
         <View style={Styles.sectionFour}>
           <View style={Styles.slotsWrapper}>
-            <Text style={Styles.numberSlot}>66</Text>
+            <Text style={Styles.numberSlot}>{item.slotAvailable}</Text>
             <Text style={Styles.availableSlot}>Available Slots</Text>
           </View>
           <View style={Styles.buttonBookWrapper}>
@@ -63,7 +63,6 @@ const RenderItemCardPark = (props) => {
 
 const ParkCard = ({ data, navigation }) => {
 
-  console.log(navigation);
   return (
     <View style={{paddingHorizontal: 20}}>
       <Carousel
@@ -78,7 +77,7 @@ const ParkCard = ({ data, navigation }) => {
         pageInfoTextStyle={{fontWeight: 'bold', color: '#FFF'}}
       >
         {data.map((item, idx) => (
-          <RenderItemCardPark item={item} key={`park-card-${idx}`} onPress={navigation} />
+          <RenderItemCardPark item={item} key={`park-card-${idx}`} onPress={() => navigation.navigate('BookingPark', item)} />
         ))}
       </Carousel>
     </View>

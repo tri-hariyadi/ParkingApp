@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { responsiveFontSize } from "react-native-responsive-dimensions";
 import Styles from './style';
 import Gap from '../Gap';
+import { colors } from '../../../utils';
 
 const TextField = ({
   iconName,
@@ -18,14 +19,16 @@ const TextField = ({
   onSubmitEditing,
   radiusSize,
   input: { onChange, ...restInput },
-  meta: { error, warning, form, dispatch, touched },
+  meta: { error, warning, touched },
 }) => {
+
   return (
     <View>
-      <View style={Styles.wrapper(radiusSize)}>
+      <View style={Styles.wrapper(radiusSize, touched && error)}>
         <Icon
           name={iconName}
           size={responsiveFontSize(2.5)}
+          color={touched && error ? 'red' : colors.colorVariables.indigo1}
         />
         <Gap width={2} />
         <TextInput

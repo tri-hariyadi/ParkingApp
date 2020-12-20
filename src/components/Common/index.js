@@ -4,6 +4,7 @@ import Button from './Button';
 import Link from './Link';
 import TabItem from './TabItem';
 import Dropdown from './Dropdown';
+import AlertAwesome from './AlertAwesome';
 
 export {
   TextField,
@@ -11,5 +12,6 @@ export {
   Button,
   Link,
   TabItem,
-  Dropdown
+  Dropdown,
+  AlertAwesome
 }

@@ -4,7 +4,7 @@ import { colors, customFont } from '../../utils';
 
 const Styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: 'space-between',
     backgroundColor: colors.colorVariables.white,
     paddingBottom: responsiveHeight(4),
@@ -20,7 +20,11 @@ const Styles = StyleSheet.create({
   },
   lastList: {
     borderBottomWidth: 0,
-    paddingVertical: 5
+    paddingVertical: 5,
+    paddingVertical: responsiveHeight(2.5),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   label: {
     marginHorizontal: responsiveWidth(1.6),

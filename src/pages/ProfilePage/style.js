@@ -20,9 +20,7 @@ const Styles = StyleSheet.create({
     backgroundColor: colors.colorVariables.white,
   },
   header: {
-    flexDirection: 'row',
     alignItems: 'center',
-    height: responsiveHeight(26),
     backgroundColor: colors.colorVariables.greenLightDark1,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
@@ -33,12 +31,6 @@ const Styles = StyleSheet.create({
     width: responsiveWidth(25),
     borderRadius: responsiveWidth(25) / 2,
     height: responsiveHeight(15),
-  },
-  textProfileWrapper: {
-    flex: 1,
-    alignItems: 'flex-start',
-    paddingLeft: responsiveWidth(5),
-    justifyContent: 'flex-start',
   },
   textProfile: {
     alignItems: 'flex-end',
@@ -63,7 +55,7 @@ const Styles = StyleSheet.create({
   textMoney: {
     marginLeft: responsiveWidth(2),
     fontFamily: customFont.secondary[700],
-    fontSize: responsiveFontSize(2.3),
+    fontSize: responsiveFontSize(2),
     color: colors.colorVariables.white,
     textTransform: 'capitalize',
   },
